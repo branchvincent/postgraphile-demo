@@ -10,4 +10,4 @@ services:
       POSTGRES_PASSWORD: pass
     volumes:
       - ./db:/var/lib/postgresql/data
-      # - "./seed/base.sql:/docker-entrypoint-initdb.d/seed.sql"
+      # - "./src/db/migrations/committed:/docker-entrypoint-initdb.d"

@@ -4,9 +4,14 @@
   "type": "module",
   "main": "src/server.js",
   "scripts": {
-    "start": "nodemon src/server.js",
+    "dev": "npm run start:services && concurrently npm:*:watch",
+    "start:watch": "nodemon src/server.js",
     "start:services": "docker-compose up -d",
     "db": "graphile-migrate",
+    "db:watch": "graphile-migrate watch",
+    "db:commit": "graphile-migrate commit",
+    "db:uncommit": "graphile-migrate uncommit",
+    "db:reset": "graphile-migrate reset --erase",
     "lint": "eslint --cache --fix --format=visualstudio --ignore-path=.gitignore ."
   },
   "dependencies": {
@@ -16,6 +21,7 @@
     "postgraphile": "^4.11.0"
   },
   "devDependencies": {
+    "concurrently": "^6.0.0",
     "eslint": "^7.23.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.1.0",

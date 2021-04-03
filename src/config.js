@@ -32,10 +32,13 @@ export const options = {
   extendedErrors: ['hint', 'detail', 'errcode'],
   allowExplain: true,
   legacyRelations: 'omit',
-  exportGqlSchemaPath: new URL('./graphql/schema.graphql', import.meta.url).pathname,
+  exportGqlSchemaPath: new URL('../data/schema.graphql', import.meta.url)
+    .pathname,
   sortExport: true,
   enableQueryBatching: true,
   appendPlugins: [PgSimplifyInflectorPlugin],
+  jwtSecret: 'secret',
+  jwtPgTypeIdentifier: 'app_public.jwt_token',
 };
 
 // Server port

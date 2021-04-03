@@ -1,0 +1,22 @@
+// -*- mode: jsonc -*-
+{
+  // Graphile Migrate: https://github.com/graphile/migrate#configuration
+  "//generatedWith": "1.0.2",
+  "migrationsFolder": "./src/db/migrations",
+  "blankMigrationContent": "",
+  "pgSettings": {
+    // SET LOCAL <key> TO <value>`
+    // "search_path": "app_public,app_private,app_hidden,public",
+  },
+  "placeholders": {
+    // ":DATABASE_VISITOR": "!ENV", // $DATABASE_VISITOR
+  },
+  "afterReset": ["!afterReset.sql"],
+  "afterAllMigrations": [
+    {
+      "_": "command",
+      "shadow": true,
+      "command": "pg_dump --schema-only --no-owner --no-sync --exclude-schema=graphile_migrate --file=./data/schema.sql \"$GM_DBURL\""
+    }
+  ]
+}
