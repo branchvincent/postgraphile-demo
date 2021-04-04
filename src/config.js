@@ -5,7 +5,7 @@ import PgSimplifyInflectorPlugin from '@graphile-contrib/pg-simplify-inflector';
 export const database = process.env.DATABASE_URL || 'postgraphile';
 
 // Database schemas to use
-export const schemas = ['public'];
+export const schemas = ['app_public'];
 
 // PostGraphile options; see https://www.graphile.org/postgraphile/usage-library/#api-postgraphilepgconfig-schemaname-options
 export const options = {
@@ -14,6 +14,7 @@ export const options = {
     // good enough way that we can extract headers.
     // CREATE FUNCTION current_user_id() RETURNS text AS $$ SELECT current_setting('graphile.test.x-user-id', TRUE); $$ LANGUAGE sql STABLE;
     return {
+      role: process.env.DATABASE_VISITOR,
       'graphile.test.x-user-id':
         req.headers['x-user-id'] ||
         // `normalizedConnectionParams` comes from websocket connections, where
