@@ -159,3 +159,4 @@ comment on function app_public.authenticate(text, text) is 'Creates a JWT token 
 
 --- Seed ---
 select app_public.register_user('John', 'Doe', 'john.doe@gmail.com', 'password');
+select app_public.register_user('Branch', 'Vincent', 'branchevincent@gmail.com', 'password');
