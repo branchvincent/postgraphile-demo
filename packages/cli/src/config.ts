@@ -14,8 +14,8 @@ const schema = {
     type: 'string',
     default: 'bar',
   },
-};
+} as const
 
-const config = new Conf({ schema });
+const config = new Conf({ schema })
 
-export default config;
+export default config

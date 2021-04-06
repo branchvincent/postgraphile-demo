@@ -1,4 +1,4 @@
-import { Command, flags } from '@oclif/command'
+import {Command, flags} from '@oclif/command'
 import gql from 'graphql-tag'
 
 import createClient from '../../client'
@@ -15,18 +15,18 @@ export default class Status extends Command {
   static description = 'Get current user';
 
   static flags = {
-    help: flags.help({ char: 'h' }),
+    help: flags.help({char: 'h'}),
   };
 
   async run() {
-    const { flags } = this.parse(Status);
-    const client = createClient();
-    const { currentUser } = await client.request(CurrentUserDocument, flags);
+    const {flags} = this.parse(Status)
+    const client = createClient()
+    const {currentUser} = await client.request(CurrentUserDocument, flags)
     if (currentUser) {
-        const { fullName } = currentUser;
-        this.log(`Authenticated as ${fullName} against ${client.url}`);
+      const {fullName} = currentUser
+      this.log(`Authenticated as ${fullName}`)
     } else {
-        this.error(`Not logged in against ${client.url}`);
+      this.error(`Not logged!`)
     }
   }
 }

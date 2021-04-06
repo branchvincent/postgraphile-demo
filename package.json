@@ -1,18 +1,18 @@
 {
   "name": "postgraphile-demo",
   "private": true,
-  "type": "module",
-  "main": "packages/server/index.js",
   "scripts": {
     "dev": "npm run start:services && concurrently npm:*:watch",
-    "server:watch": "npm run --workspace=server dev",
     "start:services": "docker-compose up -d",
+    "server:watch": "npm run --workspace=server dev",
+    "codegen:watch": "npm run --workspace=codegen watch",
+    "tsc:watch": "tsc -b --watch --preserveWatchOutput",
     "db": "graphile-migrate",
     "db:watch": "graphile-migrate watch",
     "db:commit": "graphile-migrate commit",
     "db:uncommit": "graphile-migrate uncommit",
     "db:reset": "graphile-migrate reset --erase",
-    "codegen": "npm run --workspace=codegen generate",
+    "codegen": "npm run --workspace=codegen build",
     "lint": "eslint --cache --fix --format=visualstudio --ignore-path=.gitignore ."
   },
   "workspaces": {
@@ -30,6 +30,6 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "prettier": "^2.2.1",
-    "typescript": "^3.9.9"
+    "typescript": "^4.2.3"
   }
 }
