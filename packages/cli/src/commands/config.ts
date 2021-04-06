@@ -1,23 +1,23 @@
-import {Command, flags} from '@oclif/command'
+import { Command, flags } from '@oclif/command'
 
 import conf from '../config'
 
 export default class Config extends Command {
-  static description = 'manage configuration';
+  static description = 'manage configuration'
 
   static flags = {
-    help: flags.help({char: 'h'}),
-    delete: flags.boolean({char: 'd', description: 'delete?'}),
-    config: flags.string({char: 'c', description: 'config file location'}),
-  };
+    help: flags.help({ char: 'h' }),
+    delete: flags.boolean({ char: 'd', description: 'delete?' }),
+    config: flags.string({ char: 'c', description: 'config file location' }),
+  }
 
   static args = [
-    {name: 'key', description: 'key of the config'},
-    {name: 'value', description: 'value of the config'},
-  ];
+    { name: 'key', description: 'key of the config' },
+    { name: 'value', description: 'value of the config' },
+  ]
 
-  async run() {
-    const {args, flags} = this.parse(Config)
+  async run(): Promise<void> {
+    const { args, flags } = this.parse(Config)
 
     if (args.key && flags.delete) {
       // Delete key

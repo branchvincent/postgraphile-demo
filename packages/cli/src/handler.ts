@@ -1,24 +1,24 @@
-import {Command} from '@oclif/command'
+import { Command } from '@oclif/command'
 
 import createClient from './client'
 
 interface QueryHandlerProps {
-  command: Command;
-  query: string;
-  variables?: Record<string, any>;
+  command: Command
+  query: string
+  variables?: Record<string, unknown>
 }
 
 export default async function handler({
   command,
   query,
   variables,
-}: QueryHandlerProps) {
+}: QueryHandlerProps): Promise<void> {
   const client = createClient()
   try {
     const result = await client.request(query, variables)
     const resultStr = JSON.stringify(result, null, '  ')
     return command.log(resultStr)
-  } catch (e) {
-    return command.error(e)
+  } catch (error) {
+    return command.error(error)
   }
 }

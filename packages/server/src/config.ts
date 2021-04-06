@@ -1,13 +1,14 @@
 // See https://github.com/graphile/postgraphile/blob/v4/examples/servers/common.ts
-import PgSimplifyInflectorPlugin from '@graphile-contrib/pg-simplify-inflector';
-import type { Pool } from 'pg';
+import PgSimplifyInflectorPlugin from '@graphile-contrib/pg-simplify-inflector'
+import type { Pool } from 'pg'
 import { PostGraphileOptions } from 'postgraphile'
 
 // Connection string (or pg.Pool) for PostGraphile to use
-export const database: string | Pool = process.env.DATABASE_URL || 'postgraphile';
+export const database: string | Pool =
+  process.env.DATABASE_URL || 'postgraphile'
 
 // Database schemas to use
-export const schemas: string | string[] = ['app_public'];
+export const schemas: string | string[] = ['app_public']
 
 // PostGraphile options; see https://www.graphile.org/postgraphile/usage-library/#api-postgraphilepgconfig-schemaname-options
 export const options: PostGraphileOptions = {
@@ -21,8 +22,8 @@ export const options: PostGraphileOptions = {
         req.headers['x-user-id'] ||
         // `normalizedConnectionParams` comes from websocket connections, where
         // the headers often cannot be customized by the client.
-        (req as any).normalizedConnectionParams?.['x-user-id'],
-    };
+        (req as unknown).normalizedConnectionParams?.['x-user-id'],
+    }
   },
   watchPg: true,
   graphiql: true,
@@ -43,7 +44,9 @@ export const options: PostGraphileOptions = {
   appendPlugins: [PgSimplifyInflectorPlugin],
   jwtSecret: 'secret',
   jwtPgTypeIdentifier: 'app_public.jwt_token',
-};
+}
 
 // Server port
-export const port: number = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
+export const port: number = process.env.PORT
+  ? parseInt(process.env.PORT, 10)
+  : 3000

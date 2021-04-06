@@ -2,9 +2,9 @@ schema: "../../data/schema.graphql"
 config:
   namingConvention:
     enumValues: keep
-hooks:
-  afterAllFileWrite:
-    - eslint --fix
+# hooks:
+#   afterAllFileWrite:
+#     - eslint --fix
 generates:
   # CLI
   ../cli/src/types.ts:
