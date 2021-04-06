@@ -22,7 +22,8 @@ export const options: PostGraphileOptions = {
         req.headers['x-user-id'] ||
         // `normalizedConnectionParams` comes from websocket connections, where
         // the headers often cannot be customized by the client.
-        (req as unknown).normalizedConnectionParams?.['x-user-id'],
+        // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+        (req as any).normalizedConnectionParams?.['x-user-id'],
     }
   },
   watchPg: true,
