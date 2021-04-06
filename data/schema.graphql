@@ -373,6 +373,9 @@ type User implements Node {
   """The user’s first name."""
   firstName: String!
 
+  """The user’s full name."""
+  fullName: String
+
   """The primary unique identifier for the user."""
   id: Int!
 

@@ -19,4 +19,4 @@ generates:
       baseTypesPath: ../types.ts
     plugins:
       - typescript-oclif:
-          handlerPath: ../handler
+          handlerPath: ../../handler

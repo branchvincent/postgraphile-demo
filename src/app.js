@@ -1,6 +1,7 @@
 import express from 'express';
 import { postgraphile } from 'postgraphile';
-import { database, schemas, options } from './config.js';
+
+import { database, options, schemas } from './config.js';
 
 const app = express();
 

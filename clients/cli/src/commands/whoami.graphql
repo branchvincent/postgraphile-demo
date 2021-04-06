@@ -1,7 +1,0 @@
-query getCurrentUser @oclif(description: "Get current user", example: "gql me") {
-  currentUser {
-    id
-    firstName
-    lastName
-  }
-}

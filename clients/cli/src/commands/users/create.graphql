@@ -1,0 +1,22 @@
+mutation RegisterUser(
+  $firstName: String!
+  $lastName: String!
+  $email: String!
+  $password: String!
+) @oclif(description: "Create a new user") {
+  registerUser(
+    input: {
+      firstName: $firstName
+      lastName: $lastName
+      email: $email
+      password: $password
+    }
+  ) {
+    clientMutationId
+    user {
+      id
+      firstName
+      lastName
+    }
+  }
+}

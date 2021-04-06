@@ -59,10 +59,17 @@ create trigger _users_set_updated_at
   before update on app_public.users
   for each row execute procedure app_private.tg__timestamps();
 
+create or replace function app_public.users_full_name(
+  usr app_public.users
+) returns text as $$
+  select usr.first_name || ' ' || usr.last_name;
+$$ language sql stable;
+
 comment on table app_public.users is 'A user of the app.';
 comment on column app_public.users.id is 'The primary unique identifier for the user.';
 comment on column app_public.users.first_name is 'The user’s first name.';
 comment on column app_public.users.last_name is 'The user’s last name.';
+comment on function app_public.users_full_name is 'The user’s full name.';
 comment on column app_public.users.created_at is 'The time this user was created.';
 comment on column app_public.users.updated_at is 'The time this user was updated.';
 
