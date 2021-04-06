@@ -37,7 +37,7 @@ export const options: PostGraphileOptions = {
   legacyRelations: 'omit',
   // exportGqlSchemaPath: new URL('../../data/schema.graphql', import.meta.url)
   //   .pathname,
-  exportGqlSchemaPath: `${__dirname}/../../data/schema.graphql`,
+  exportGqlSchemaPath: `${__dirname}/../../../data/schema.graphql`,
   sortExport: true,
   enableQueryBatching: true,
   appendPlugins: [PgSimplifyInflectorPlugin],
