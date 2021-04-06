@@ -12,8 +12,13 @@
     "db:commit": "graphile-migrate commit",
     "db:uncommit": "graphile-migrate uncommit",
     "db:reset": "graphile-migrate reset --erase",
-    "codegen": "cd packages/codegen && npm run generate",
+    "codegen": "npm run --workspace=codegen generate",
     "lint": "eslint --cache --fix --format=visualstudio --ignore-path=.gitignore ."
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
   },
   "dependencies": {
     "@graphile-contrib/pg-simplify-inflector": "^6.1.0",
