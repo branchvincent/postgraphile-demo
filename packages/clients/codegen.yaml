@@ -2,6 +2,9 @@ schema: "http://localhost:${PORT:3000}/graphql"
 config:
   namingConvention:
     enumValues: keep
+# hooks:
+#   afterAllFileWrite:
+#     - eslint --fix
 generates:
   # Schema
   schema.json:

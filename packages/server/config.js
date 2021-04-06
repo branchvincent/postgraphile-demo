@@ -33,7 +33,7 @@ export const options = {
   extendedErrors: ['hint', 'detail', 'errcode'],
   allowExplain: true,
   legacyRelations: 'omit',
-  exportGqlSchemaPath: new URL('../data/schema.graphql', import.meta.url)
+  exportGqlSchemaPath: new URL('../../data/schema.graphql', import.meta.url)
     .pathname,
   sortExport: true,
   enableQueryBatching: true,

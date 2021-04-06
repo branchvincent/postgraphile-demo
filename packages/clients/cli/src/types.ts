@@ -358,6 +358,8 @@ export type User = Node & {
   createdAt?: Maybe<Scalars['Datetime']>;
   /** The time this user was updated. */
   updatedAt?: Maybe<Scalars['Datetime']>;
+  /** The user’s full name. */
+  fullName?: Maybe<Scalars['String']>;
 };
 
 /** A condition to be used against `User` object types. All fields are tested for equality and combined with a logical ‘and.’ */
