@@ -1,14 +1,16 @@
 // See https://github.com/graphile/postgraphile/blob/v4/examples/servers/common.ts
 import PgSimplifyInflectorPlugin from '@graphile-contrib/pg-simplify-inflector';
+import type { Pool } from 'pg';
+import { PostGraphileOptions } from 'postgraphile'
 
 // Connection string (or pg.Pool) for PostGraphile to use
-export const database = process.env.DATABASE_URL || 'postgraphile';
+export const database: string | Pool = process.env.DATABASE_URL || 'postgraphile';
 
 // Database schemas to use
-export const schemas = ['app_public'];
+export const schemas: string | string[] = ['app_public'];
 
 // PostGraphile options; see https://www.graphile.org/postgraphile/usage-library/#api-postgraphilepgconfig-schemaname-options
-export const options = {
+export const options: PostGraphileOptions = {
   pgSettings(req) {
     // Adding this to ensure that all servers pass through the request in a
     // good enough way that we can extract headers.
@@ -19,7 +21,7 @@ export const options = {
         req.headers['x-user-id'] ||
         // `normalizedConnectionParams` comes from websocket connections, where
         // the headers often cannot be customized by the client.
-        req.normalizedConnectionParams?.['x-user-id'],
+        (req as any).normalizedConnectionParams?.['x-user-id'],
     };
   },
   watchPg: true,
@@ -33,8 +35,9 @@ export const options = {
   extendedErrors: ['hint', 'detail', 'errcode'],
   allowExplain: true,
   legacyRelations: 'omit',
-  exportGqlSchemaPath: new URL('../../data/schema.graphql', import.meta.url)
-    .pathname,
+  // exportGqlSchemaPath: new URL('../../data/schema.graphql', import.meta.url)
+  //   .pathname,
+  exportGqlSchemaPath: `${__dirname}/../../data/schema.graphql`,
   sortExport: true,
   enableQueryBatching: true,
   appendPlugins: [PgSimplifyInflectorPlugin],
@@ -43,4 +46,4 @@ export const options = {
 };
 
 // Server port
-export const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
+export const port: number = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;

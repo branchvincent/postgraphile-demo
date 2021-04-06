@@ -1,10 +1,10 @@
-import app from './app.js';
-import { options, port } from './config.js';
+import app from './app';
+import { options, port } from './config';
 
 const server = app.listen(port, () => {
   const address = server.address();
   if (typeof address !== 'string') {
-    const href = `http://localhost:${address.port}${
+    const href = `http://localhost:${address?.port}${
       options.graphiqlRoute || '/graphiql'
     }`;
     console.log(`PostGraphiQL available at ${href} 🚀`);
