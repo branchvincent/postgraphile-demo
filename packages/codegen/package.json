@@ -4,7 +4,7 @@
   "scripts": {
     "pregenerate": "npm install",
     "generate": "graphql-codegen && run-p --silent build:*",
-    "build:cli": "echo 'building cli' && cd cli && npm run build && npm run link"
+    "build:cli": "echo 'building cli' && cd ../cli && npm run build && npm link"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^1.17.8",

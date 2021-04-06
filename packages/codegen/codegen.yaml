@@ -1,4 +1,4 @@
-schema: "http://localhost:${PORT:3000}/graphql"
+schema: "../../data/schema.graphql"
 config:
   namingConvention:
     enumValues: keep
@@ -11,11 +11,11 @@ generates:
     plugins:
       - introspection
   # CLI
-  cli/src/types.ts:
+  ../cli/src/types.ts:
     plugins:
       - typescript
-  cli/src/commands:
-    documents: "cli/src/commands/**/*.graphql"
+  ../cli/src/commands:
+    documents: "../cli/src/commands/**/*.graphql"
     preset: near-operation-file
     presetConfig:
       extension: .ts
