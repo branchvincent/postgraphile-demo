@@ -1,4 +1,4 @@
-# Generated Clients
+# Codegen
 
 We can leverage our GraphQL schema to generate client code via [GraphQL Code Generator](https://graphql-code-generator.com/).
 

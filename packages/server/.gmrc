@@ -2,7 +2,7 @@
 {
   // Graphile Migrate: https://github.com/graphile/migrate#configuration
   "//generatedWith": "1.0.2",
-  "migrationsFolder": "./packages/server/db/migrations",
+  "migrationsFolder": "./src/db/migrations",
   "blankMigrationContent": "",
   "pgSettings": {
     // SET LOCAL <key> TO <value>`
