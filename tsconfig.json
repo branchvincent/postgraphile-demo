@@ -1,5 +1,4 @@
 {
-  // https://aka.ms/tsconfig.json
   "compilerOptions": {
     "incremental": true,
     "target": "esnext",

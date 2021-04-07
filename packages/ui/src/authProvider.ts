@@ -1,29 +1,45 @@
-export default {
+interface LoginCredentials {
+    username: string
+}
+
+interface APIResponse {
+    status: number
+}
+
+class Auth {
     // called when the user attempts to log in
-    login: ({ username }) => {
+    login({ username }: LoginCredentials) {
         localStorage.setItem('username', username);
         // accept all username/password combinations
         return Promise.resolve();
-    },
+    }
+
     // called when the user clicks on the logout button
-    logout: () => {
+    logout() {
         localStorage.removeItem('username');
         return Promise.resolve();
-    },
+    }
+
     // called when the API returns an error
-    checkError: ({ status }) => {
+    checkError({ status }: APIResponse) {
         if (status === 401 || status === 403) {
             localStorage.removeItem('username');
             return Promise.reject();
         }
         return Promise.resolve();
-    },
+    }
+
     // called when the user navigates to a new location, to check for authentication
-    checkAuth: () => {
+    checkAuth() {
         return localStorage.getItem('username')
             ? Promise.resolve()
             : Promise.reject();
-    },
+    }
+
     // called when the user navigates to a new location, to check for permissions / roles
-    getPermissions: () => Promise.resolve(),
-};
+    getPermissions() {
+        return Promise.resolve()
+    }
+}
+
+export default new Auth();
