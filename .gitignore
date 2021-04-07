@@ -1,5 +1,7 @@
 .eslintcache
 /db/
+/packages/cli/src/commands/**/*.ts
+/packages/cli/src/types.ts
 dist/
 lib/
 node_modules/

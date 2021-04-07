@@ -8,7 +8,8 @@
     "codegen:watch": "npm run codegen watch",
     "tsc:watch": "tsc -b --watch --preserveWatchOutput",
     "db:watch": "npm run server db:watch",
-    "lint": "eslint --cache --fix --format=visualstudio .",
+    "clean": "git clean -Xdf -e '!.env*' -e '!.vscode/'",
+    "lint": "eslint --cache --fix --ignore-path=.gitignore --format=visualstudio .",
     "cli": "npm run --workspace=cli",
     "codegen": "npm run --workspace=codegen",
     "server": "npm run --workspace=server"
@@ -25,7 +26,6 @@
     "eslint": "^7.23.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.1.0",
-    "eslint-gitignore": "^0.1.0",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "prettier": "^2.2.1",
