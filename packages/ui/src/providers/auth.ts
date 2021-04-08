@@ -50,6 +50,7 @@ class Auth {
   }
 
   // called when the user navigates to a new location, to check for permissions / roles
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   async getPermissions() {}
 }
 

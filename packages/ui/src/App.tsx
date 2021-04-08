@@ -1,17 +1,19 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client'
 import { useApolloClient } from '@apollo/react-hooks'
 import { ApolloProvider } from '@apollo/react-hooks'
-import PostIcon from '@material-ui/icons/Book'
-import UserIcon from '@material-ui/icons/Group'
 import pgDataProvider from 'ra-postgraphile'
 import React, { useEffect, useState } from 'react'
-import { Admin, LegacyDataProvider, ListGuesser, Resource } from 'react-admin'
+import { Admin, LegacyDataProvider, Resource } from 'react-admin'
 
 import Dashboard from './Dashboard'
 import authProvider from './providers/auth'
-import { PostCreate, PostEdit, PostList, PostShow } from './resources/posts'
-import { ToDoList } from './resources/todos'
-import { UserList } from './resources/users'
+import users from './resources/users'
+
+// TODO: add headers from auth
+const client = new ApolloClient({
+  uri: 'http://localhost:3000/graphql',
+  cache: new InMemoryCache(),
+})
 
 function ReactAdminWrapper() {
   const [dataProvider, setDataProvider] = useState<LegacyDataProvider | null>(
@@ -21,6 +23,7 @@ function ReactAdminWrapper() {
 
   useEffect(() => {
     ;(async () => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const dataProvider = await pgDataProvider(client as any)
       setDataProvider(() => dataProvider)
     })()
@@ -33,28 +36,13 @@ function ReactAdminWrapper() {
         authProvider={authProvider}
         dataProvider={dataProvider}
       >
-        <Resource
-          name="posts"
-          icon={PostIcon}
-          list={PostList}
-          edit={PostEdit}
-          create={PostCreate}
-          show={PostShow}
-        />
-        <Resource name="users" icon={UserIcon} list={UserList} />
-        <Resource name="todos" icon={UserIcon} list={ToDoList} />
-        <Resource name="comments" list={ListGuesser} />
+        <Resource name="users" {...users} />
       </Admin>
     )
   )
 }
 
-const client = new ApolloClient({
-  uri: 'http://localhost:3000/graphql',
-  cache: new InMemoryCache(),
-})
-
-function App() {
+function App(): React.ReactElement {
   return (
     <ApolloProvider client={client}>
       <ReactAdminWrapper />
