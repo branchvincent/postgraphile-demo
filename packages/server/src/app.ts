@@ -1,3 +1,4 @@
+import cors from 'cors'
 import express from 'express'
 import { postgraphile } from 'postgraphile'
 
@@ -5,8 +6,7 @@ import { database, options, schemas } from './config'
 
 const app = express()
 
-const middleware = postgraphile(database, schemas, options)
-
-app.use(middleware)
+app.use(cors())
+app.use(postgraphile(database, schemas, options))
 
 export default app

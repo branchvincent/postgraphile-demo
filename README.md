@@ -16,5 +16,6 @@
 
 By default, the following services will be available:
 
-- Postgres at <postgres://user:pass@localhost:5432/db>
+- React App at <http://localhost:3005/>
 - GraphQL server at <http://localhost:3000/graphiql>
+- Postgres at <postgres://user:pass@localhost:5432/db>

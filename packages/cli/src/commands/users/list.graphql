@@ -21,11 +21,10 @@ query Users(
       startCursor
     }
     nodes {
+      id
       firstName
       lastName
-      updatedAt
-      createdAt
-      id
+      fullName
     }
   }
 }
