@@ -1,14 +1,14 @@
-import { List, Datagrid, EmailField, TextField, ListProps } from 'react-admin';
+import { Datagrid, EmailField, List, ListProps, TextField } from 'react-admin'
 
 export function ToDoList(props: ListProps) {
-    return (
-        <List title="All users" {...props}>
-            <Datagrid>
-                <TextField source="id" />
-                <TextField source="title" />
-                <TextField source="completed" />
-                <EmailField source="userId" />
-            </Datagrid>
-        </List>
-    );
-};
+  return (
+    <List title="All users" {...props}>
+      <Datagrid>
+        <TextField source="id" />
+        <TextField source="title" />
+        <TextField source="completed" />
+        <EmailField source="userId" />
+      </Datagrid>
+    </List>
+  )
+}

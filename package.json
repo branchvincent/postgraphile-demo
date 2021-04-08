@@ -1,7 +1,9 @@
 {
   "name": "postgraphile-demo",
-  "workspaces": ["packages/*"],
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "predev": "yarn start:services && tsc --build && yarn cli build",
     "dev": "concurrently npm:*:watch",

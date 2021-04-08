@@ -7261,7 +7261,7 @@ graphql-request@^3.1.0, graphql-request@^3.3.0, graphql-request@^3.4.0:
     extract-files "^9.0.0"
     form-data "^3.0.0"
 
-graphql-tag@^2.10.1, graphql-tag@^2.11.0, graphql-tag@^2.4.2:
+graphql-tag@^2.10.1, graphql-tag@^2.10.4, graphql-tag@^2.11.0, graphql-tag@^2.4.2:
   version "2.11.0"
   resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-2.11.0.tgz#1deb53a01c46a7eb401d6cb59dec86fa1cccbffd"
   integrity sha512-VmsD5pJqWJnQZMUeRwrDhfgoyqcfwEkvtpANqcoUG8/tOLkwNgU9mzub/Mc78OJMhHjx7gfAMTxzdG43VGg3bA==
@@ -10903,6 +10903,11 @@ pluralize@^7.0.0, pluralize@~7.0.0:
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-7.0.0.tgz#298b89df8b93b0221dbf421ad2b1b1ea23fc6777"
   integrity sha512-ARhBOdzS3e41FbkW/XWrTEtukqqLoK5+Z/4UeDaLuSW+39JPeFgs4gCGqsrJHVZX0fUrx//4OF0K1CUGwlIFow==
 
+pluralize@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-8.0.0.tgz#1a6fa16a38d12a1901e0320fa017051c539ce3b1"
+  integrity sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==
+
 pnp-webpack-plugin@1.6.4:
   version "1.6.4"
   resolved "https://registry.yarnpkg.com/pnp-webpack-plugin/-/pnp-webpack-plugin-1.6.4.tgz#c9711ac4dc48a685dabafc86f8b6dd9f8df84149"
@@ -11996,6 +12001,15 @@ ra-language-english@^3.14.2:
   integrity sha512-3KvY66KYa0o0xpTML4kqyCKthYVvgoorIR3XAojoXU1Rg1kAohZZPCF3HUH2emx8xQXpV8EB3Zohu4naWLTYTQ==
   dependencies:
     ra-core "^3.14.2"
+
+ra-postgraphile@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/ra-postgraphile/-/ra-postgraphile-4.2.0.tgz#b5d90f22dc7d7a5e3497783665895d98a62785c4"
+  integrity sha512-G6M1gHZLGt3z5oxoZMJUYmqJ8OExhfrlW3yBFVB2sNkuUUfeNte+rc40gswD6A3doZ22fjcSxmJlmfJB8fc5uQ==
+  dependencies:
+    graphql "^14.7.0"
+    graphql-tag "^2.10.4"
+    pluralize "^8.0.0"
 
 ra-ui-materialui@^3.14.2:
   version "3.14.2"
