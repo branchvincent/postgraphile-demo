@@ -4,8 +4,9 @@ import UserIcon from '@material-ui/icons/Group';
 import { Admin, Resource, ListGuesser } from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
 
-import { PostList, PostEdit, PostCreate, PostShow } from './posts';
-import { UserList } from './users';
+import { PostList, PostEdit, PostCreate, PostShow } from './resources/posts';
+import { UserList } from './resources/users';
+import { ToDoList } from './resources/todos';
 import Dashboard from './Dashboard';
 import authProvider from './authProvider';
 
@@ -27,6 +28,7 @@ function App() {
                 show={PostShow}
             />
             <Resource name="users" icon={UserIcon} list={UserList} />
+            <Resource name="todos" icon={UserIcon} list={ToDoList} />
             <Resource name="comments" list={ListGuesser} />
         </Admin>
     );

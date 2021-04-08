@@ -15,7 +15,7 @@ import {
     SelectInput,
     SimpleForm,
     TextInput,
-    Filter,
+    Filter
 } from 'react-admin';
 
 interface Props {
