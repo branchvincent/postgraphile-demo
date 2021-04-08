@@ -1,25 +1,23 @@
 {
   "name": "postgraphile-demo",
+  "workspaces": ["packages/*"],
   "private": true,
   "scripts": {
-    "dev": "npm run start:services && npm run --workspaces build && concurrently npm:*:watch",
+    "predev": "yarn start:services && tsc --build && yarn cli build",
+    "dev": "concurrently npm:*:watch",
     "start:services": "docker-compose up -d",
-    "server:watch": "npm run server dev",
-    "codegen:watch": "npm run codegen watch",
+    "server:watch": "yarn server watch",
+    "codegen:watch": "yarn codegen watch",
     "tsc:watch": "tsc -b --watch --preserveWatchOutput",
-    "db:watch": "npm run server db:watch",
-    "ui:watch": "npm run ui start",
+    "db:watch": "yarn db watch",
+    "ui:watch": "yarn ui start",
     "clean": "git clean -Xdf -e '!.env*' -e '!.vscode/'",
     "lint": "eslint --cache --fix --ignore-path=.gitignore --format=visualstudio .",
-    "cli": "npm run --workspace=cli",
-    "codegen": "npm run --workspace=codegen",
-    "server": "npm run --workspace=server",
-    "ui": "npm run --workspace=ui"
-  },
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ]
+    "cli": "yarn workspace cli",
+    "codegen": "yarn workspace codegen",
+    "db": "yarn workspace server db",
+    "server": "yarn workspace server",
+    "ui": "yarn workspace ui"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.21.0",
@@ -30,7 +28,6 @@
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-simple-import-sort": "^7.0.0",
-    "lerna": "^4.0.0",
     "prettier": "^2.2.1",
     "typescript": "^4.2.3"
   }

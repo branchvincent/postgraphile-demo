@@ -5,13 +5,13 @@
 1. Install deps
 
    ```console
-   npm install
+   yarn
    ```
 
 2. Start server
 
    ```console
-   npm run dev
+   yarn dev
    ```
 
 By default, the following services will be available:
