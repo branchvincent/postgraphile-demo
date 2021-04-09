@@ -5,7 +5,7 @@
     "packages/*"
   ],
   "scripts": {
-    "predev": "yarn start:services && tsc --build && yarn cli build",
+    "predev": "yarn start:services && ./scripts/wait-for-containers && tsc --build && yarn cli build",
     "dev": "concurrently npm:*:watch",
     "start:services": "docker-compose up -d",
     "server:watch": "yarn server watch",

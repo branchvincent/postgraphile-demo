@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
+[ -n "${DEBUG:-}" ] && set -x
 
 RED="$(tput setaf 1 2>/dev/null || printf '')"
 GREEN="$(tput setaf 2 2>/dev/null || printf '')"
@@ -25,20 +26,18 @@ get_health() {
 }
 
 wait_for_health() {
-    local t=0
+    local attempt=1
     while [ "$(get_health "$1")" != "healthy" ]; do
         echo -n "."
+        [ "$attempt" -ge "${RETRIES:=3}" ] && return 1
         sleep "${INTERVAL:=10}"
-        t=$((t+1))
-        if [ "$t" -ge "${RETRIES:=3}" ]; then
-            echo " ${RED}x${RESET}"
-            exit 1
-        fi
+        attempt=$((attempt+1))
     done
 }
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
+        -r|--retries) RETRIES="$2" && shift;;
         -i|--interval) INTERVAL="$2" && shift;;
         -h|--help) usage && exit 0;;
         *) usage && exit 1
@@ -50,6 +49,10 @@ for name in $(docker-compose ps --services); do
     id=$(docker-compose ps -q "$name")
     [ -z "$id" ] && continue
     echo -n "$name"
-    wait_for_health "$id"
-    echo -e " ${GREEN}✔${RESET}"
+    if wait_for_health "$id"; then
+        echo -e " ${GREEN}✔${RESET}"
+    else
+        echo " ${RED}x${RESET}"
+        exit 1
+    fi
 done

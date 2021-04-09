@@ -9,7 +9,6 @@ services:
       POSTGRES_PASSWORD: pass
     volumes:
       - ./db:/var/lib/postgresql/data
-      # - "./src/db/migrations/committed:/docker-entrypoint-initdb.d"
     healthcheck:
       test: ["CMD", "pg_isready"]
       interval: 10s
