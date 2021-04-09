@@ -2,8 +2,7 @@ version: "3.8"
 services:
   db:
     image: postgres:13
-    ports:
-      - 5432:5432
+    ports: [5432:5432]
     environment:
       POSTGRES_DB: db
       POSTGRES_USER: user
@@ -11,3 +10,8 @@ services:
     volumes:
       - ./db:/var/lib/postgresql/data
       # - "./src/db/migrations/committed:/docker-entrypoint-initdb.d"
+    healthcheck:
+      test: ["CMD", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
